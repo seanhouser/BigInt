@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <stack>
 
 class BigInteger {
 public:
@@ -17,15 +18,14 @@ public:
 
 	//constructor, loads character array value with NULL-terminated int
 	//loads number of digits into size
-	BigInteger::BigInteger( std::string v ) {
-		value = v;
+	BigInteger::BigInteger( std::string s ) {
+		value = s;
 		int temp;
-		for (size=0; v[size] != '\0'; ++size) {		//set size
-			std::stringstream str;					//inside loop to clear buffer for every char
-			str << v[size];
-			str >> temp;
-			digits.push_back(temp);
+		for (size=0; s[size] != '\0'; ++size) {		//set data member size and initialize stack
+			stack.push(s[size]);
 		}
+		std::vector<char> v(s.begin(), s.end());	//initialize vector
+		digits = v;									
 	};
 
 	//output operator
@@ -43,7 +43,28 @@ public:
 	//addition operator
 	BigInteger operator+ ( BigInteger& rhs ) {
 		BigInteger result;
-		
+		std::stack<char> tempStack = stack;
+		std::stack<char> rhsTempStack = rhs.stack;
+
+
+		while (!tempStack.empty() && !rhsTempStack.empty()) {
+			std::cout << tempStack.top() << " + " << rhsTempStack.top() << '\n';			
+			tempStack.pop();
+			rhsTempStack.pop();
+		}
+
+		/*if (rhsTempStack.empty()) {
+			while (!tempStack.empty()) {
+				std::cout << tempStack.top() << " + NONE\n" ;
+				tempStack.pop();
+			}
+		}
+		else if (tempStack.empty()) {
+			while (!rhsTempStack.empty()) {
+				std::cout << rhsTempStack.top() << " + NONE\n" ;
+				rhsTempStack.pop();
+
+		}*/
 
 		return result;
 	}
@@ -52,7 +73,8 @@ public:
 private:
 	std::string value;
 	int size;
-	std::vector<int> digits;
+	std::vector<char> digits;
+	std::stack<char> stack;
 };
 
 #endif
