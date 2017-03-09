@@ -1,5 +1,5 @@
 // BigInteger.cpp : Defines the entry point for the console application.
-//
+// TEST DRIVER FOR BigInteger.hpp
 
 #include "stdafx.h"
 #include <iostream>
@@ -7,10 +7,12 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BigInteger bInt("123412341234");
-	BigInteger sInt("1234");
+	BigInteger bInt("10000000099");
+	BigInteger sInt("99");
 
-	std::cout << bInt + sInt << '\n';
+	BigInteger result = bInt + sInt;
+
+	std::cout << result << '\n';
 
 	return 0;
 }

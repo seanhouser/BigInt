@@ -1,4 +1,4 @@
-﻿Build started 3/9/2017 2:05:09 PM.
+﻿Build started 3/9/2017 5:16:44 PM.
      1>Project "E:\Sean\Documents\GitHub\BigInt\BigInteger\BigInteger\BigInteger.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          E:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BigInteger.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt BigInteger.cpp
@@ -12,4 +12,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.22
+Time Elapsed 00:00:01.13
