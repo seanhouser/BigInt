@@ -19,12 +19,12 @@ public:
 	//constructor, loads character stack with passed param
 	//loads number of digits into size
 	BigInteger::BigInteger( std::string s ) {
-		value = s;
 		int temp;
 		for (size=0; s[size] != '\0'; ++size) {		//set data member size and initialize stack
 			stack.push(s[size]);
 		}								
 	};
+
 
 	//output operator
 	friend std::ostream &operator<< ( std::ostream &output, BigInteger &a ) {
@@ -99,9 +99,8 @@ public:
 
 
 private:
-	std::string value;
-	int size;
 	std::stack<char> stack;
+	int size;
 };
 
 #endif

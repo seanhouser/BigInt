@@ -10,6 +10,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	BigInteger bInt("10000000099");
 	BigInteger sInt("99");
 
+	std::cin >> sInt;
+
 	BigInteger result = bInt + sInt;
 
 	std::cout << result << '\n';
