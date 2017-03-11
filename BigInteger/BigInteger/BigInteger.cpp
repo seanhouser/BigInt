@@ -7,24 +7,32 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BigInteger bInt("10000000099");
-	BigInteger sInt("987");
+	BigInteger bInt("101");
+	BigInteger sInt("11");
 
 	//test copy
 	std::cout << bInt << '\n' << sInt << '\n';
 	BigInteger bacon = sInt;
 	sInt = bInt;
 	std::cout << bInt << '\n' << sInt << '\n';
-
+	
 	//test input
 	std::cout << "\nPlease enter new input for sInt: ";
 	std::cin >> sInt;
 	std::cout << bInt << '\n' << sInt << '\n';
 
+	//test >
+	//bool test = bInt > sInt;
+	//std::cout << "Greater than: " << test << '\n';
+	//test = sInt > bInt;
+	//std::cout << "Greater than: " << test << '\n';
+	//test = sInt > sInt;
+	/*^^^^ CRASH WHEN COMPARING TWO OF THE SAME OBJECT ^^^^*/
+	//std::cout << "Greater than: " << test << '\n';
+
 	//test add
-	BigInteger result = bInt + sInt;
-	std::cout << result  << '\n';
-	//std::cout << bInt + sInt << '\n' << bInt << '\n' << sInt << std::endl;
+	std::cout << bInt + sInt << '\n';
+	std::cout << bInt + sInt << '\n' << bInt << '\n' << sInt << std::endl;
 
 
 	return 0;

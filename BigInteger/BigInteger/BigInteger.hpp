@@ -2,6 +2,7 @@
 #define BIGINTEGER_H
 
 /*	- Only works on positive numbers
+	- Does not account for leading zeros in comparison operations
 	- BigInteger value must be passed as a string parameter
 	- constructor, default constructor
 	- overloaded +, >>, <<
@@ -49,8 +50,28 @@ public:
 	}
 
 //> operator
-	 bool operator <(const BigInteger& a) {
-		 return true;
+	 bool operator >(const BigInteger& a) {
+		 if (this->numStack.size() > a.numStack.size())
+			 return true;
+		 else if (this->numStack.size() < a.numStack.size())
+			 return false;
+		 else if (this->numStack.size() == a.numStack.size()) {
+			 std::stack<char> lhs = this->numStack;
+			 std::stack<char> rhs = a.numStack;
+			 char leftOperand, rightOperand;
+			 while (!lhs.empty()) {
+				 leftOperand = lhs.top();
+				 lhs.pop();
+			 }
+			 while (!lhs.empty()) {
+				 rightOperand = rhs.top();
+				 rhs.pop();
+			 }
+			 if (leftOperand > rightOperand)
+				 return true;
+			 else
+				 return false;
+		 }
 	 }
 
 //addition operator
@@ -71,16 +92,16 @@ public:
 		}
 
 		//addition operation
-		int carry = 0;
+		bool carry = false;
 		while (!largeNumStack.empty() && !smallNumStack.empty()) {
 			char c = (largeNumStack.top()+smallNumStack.top())-48;
 			if (carry == 1) {
 				c += 1; 
-				carry = 0;
+				carry = false;
 			}
 			if (c > 57) {
 				c -= 10;
-				carry = 1;
+				carry = true;
 			}
 			resultStack.push(c);
 			largeNumStack.pop();
@@ -90,16 +111,24 @@ public:
 		//for pushing digits of largeNumStack greater than smallNumStack has
 		if (smallNumStack.empty()) {
 			while (!largeNumStack.empty()) {
-				//std::cout << largeNumStack.top() << " + NONE\n" ;
-				if (carry == 1) {
-					++largeNumStack.top();
-					carry = 0;
+				if (carry == true) {
+					if (largeNumStack.top() != '9') {		//if top of stack is 9, cannot increment. Pop 9 and push 0 and keep carry = true
+						++largeNumStack.top();
+						carry = false;
+					}
+					else {
+						largeNumStack.pop();
+						largeNumStack.push('0');
+					}
 				}
 				resultStack.push(largeNumStack.top());
 				largeNumStack.pop();
 			}
 		}
+		if (carry)
+			resultStack.push('1');
 		
+
 		//initialize BigInt obj stack and string with results and return it
 		int count = resultStack.size();
 		while (count) {
