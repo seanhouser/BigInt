@@ -12,6 +12,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//test copy
 	std::cout << bInt << '\n' << sInt << '\n';
+	BigInteger bacon = sInt;
 	sInt = bInt;
 	std::cout << bInt << '\n' << sInt << '\n';
 
