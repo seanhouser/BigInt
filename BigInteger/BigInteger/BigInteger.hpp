@@ -66,9 +66,33 @@ public:
 			 while (!rhs.empty()) {
 				 rightOperand = rhs.top();
 				 rhs.pop();
-				 //account for a = a
 			 }
 			 if (leftOperand > rightOperand)
+				 return true;
+			 else
+				 return false;
+		 }
+	 }
+
+// < operator
+	 bool operator < ( const BigInteger& a ) {
+		 if (this->numStack.size() < a.numStack.size())
+			 return true;
+		 else if (this->numStack.size() > a.numStack.size())
+			 return false;
+		 else if (this->numStack.size() == a.numStack.size()) {
+			 std::stack<char> lhs = this->numStack;
+			 std::stack<char> rhs = a.numStack;
+			 char leftOperand, rightOperand;
+			 while (!lhs.empty()) {
+				 leftOperand = lhs.top();
+				 lhs.pop();
+			 }
+			 while (!rhs.empty()) {
+				 rightOperand = rhs.top();
+				 rhs.pop();
+			 }
+			 if (leftOperand < rightOperand)
 				 return true;
 			 else
 				 return false;
