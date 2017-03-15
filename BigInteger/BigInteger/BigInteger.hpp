@@ -15,23 +15,23 @@
 
 class BigInteger {
 private:
-//member data
+// member data
 	std::string numString;
 	std::stack<char> numStack;
 
 public:
-//default constructor
+// default constructor
 	BigInteger() {};
 
-//constructor
+// constructor
 	BigInteger::BigInteger( std::string s ) {
 		numString = s;
 		for (int i=0; s[i] != '\0'; ++i)
 			numStack.push(s[i]);							
 	};
 
-//input operator
-	friend std::istream &operator>> ( std::istream &input, BigInteger &a ) {
+// input operator
+	friend std::istream &operator >> ( std::istream &input, BigInteger &a ) {
 		std::string s;
 		input >> a.numString;
 		
@@ -43,14 +43,14 @@ public:
 		return input;
 	}
 
-//output operator
-	friend std::ostream &operator<< ( std::ostream &output, BigInteger &a ) {
+// output operator
+	friend std::ostream &operator << ( std::ostream &output, BigInteger &a ) {
 		output << a.numString;
 		return output;
 	}
 
-//> operator
-	 bool operator >(const BigInteger& a) {
+// > operator
+	 bool operator > ( const BigInteger& a ) {
 		 if (this->numStack.size() > a.numStack.size())
 			 return true;
 		 else if (this->numStack.size() < a.numStack.size())
@@ -63,9 +63,10 @@ public:
 				 leftOperand = lhs.top();
 				 lhs.pop();
 			 }
-			 while (!lhs.empty()) {
+			 while (!rhs.empty()) {
 				 rightOperand = rhs.top();
 				 rhs.pop();
+				 //account for a = a
 			 }
 			 if (leftOperand > rightOperand)
 				 return true;
@@ -74,8 +75,8 @@ public:
 		 }
 	 }
 
-//addition operator
-	BigInteger operator+ ( BigInteger& rhs ) {
+// addition operator
+	BigInteger operator + ( BigInteger& rhs ) {
 		BigInteger result;					//BigInteger object to return
 		std::stack<char> resultStack;		//stack for maintaining results of addition, later assigned to BigInt stack for return
 		std::stack<char> largeNumStack;		//temporary stack for larger number
@@ -140,6 +141,7 @@ public:
 
 		return result;
 	}
+
 };
 
 #endif
