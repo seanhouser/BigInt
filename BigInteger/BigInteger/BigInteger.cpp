@@ -7,8 +7,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BigInteger bInt("101");
-	BigInteger sInt("11");
+	BigInteger bInt("9");
+	BigInteger sInt("0");
 
 
 	//test copy
@@ -31,12 +31,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	//std::cout << sInt << " is greater than " << sInt << ": " << test << '\n';
 
 	//test <
-	bool test = bInt < sInt;
-	std::cout << bInt << " is less than " << sInt << ": " << test << '\n';
-	test = sInt < bInt;
-	std::cout << sInt << " is less than " << bInt << ": " << test << '\n';
-	test = sInt < sInt;
-	std::cout << sInt << " is less than " << sInt << ": " << test << '\n';
+	//bool test = bInt < sInt;
+	//std::cout << bInt << " is less than " << sInt << ": " << test << '\n';
+	//test = sInt < bInt;
+	//std::cout << sInt << " is less than " << bInt << ": " << test << '\n';
+	//test = sInt < sInt;
+	//std::cout << sInt << " is less than " << sInt << ": " << test << '\n';
+
+	//test == 
+	bool result = bInt == sInt;
+	std::cout << bInt << " is equal to " << sInt << ": " << result << '\n';
 
 	//test <
 	//bool test = bInt > sInt;

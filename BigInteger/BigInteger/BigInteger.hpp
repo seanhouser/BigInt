@@ -99,6 +99,25 @@ public:
 		 }
 	 }
 
+// == operator
+	 bool operator == (const BigInteger& a ) {
+		 bool result;
+		 std::stack<char> lhs = this->numStack;
+		 std::stack<char> rhs = a.numStack;
+		 if (lhs.size() != rhs.size())
+			 result = false;
+		 else {
+			 result = true;
+			 for (int i=0; i<lhs.size(); ++i) {
+				 if (lhs.top() != rhs.top())
+					 result = false;
+				 lhs.pop();
+				 rhs.pop();
+			 }
+		 }
+		 return result;
+	 }
+
 // addition operator
 	BigInteger operator + ( BigInteger& rhs ) {
 		BigInteger result;					//BigInteger object to return
