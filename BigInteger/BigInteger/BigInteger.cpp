@@ -7,8 +7,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BigInteger bInt("9");
-	BigInteger sInt("0");
+	BigInteger bInt("18567");
+	BigInteger sInt("35749");
 
 
 	//test copy
@@ -39,8 +39,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//std::cout << sInt << " is less than " << sInt << ": " << test << '\n';
 
 	//test == 
-	bool result = bInt == sInt;
-	std::cout << bInt << " is equal to " << sInt << ": " << result << '\n';
+	//bool result = bInt == sInt;
+	//std::cout << bInt << " is equal to " << sInt << ": " << result << '\n';
 
 	//test <
 	//bool test = bInt > sInt;
@@ -53,6 +53,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//test add
 	//std::cout << bInt + sInt << '\n';
 	//std::cout << bInt + sInt << '\n' << bInt << '\n' << sInt << std::endl;
+
+	//test mul
+	std::cout << bInt * sInt << '\n';
 
 
 	return 0;

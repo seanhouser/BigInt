@@ -13,6 +13,8 @@
 #include <sstream>
 #include <stack>
 
+const int ASCII_OFFSET = 48;
+
 class BigInteger {
 private:
 // member data
@@ -138,7 +140,7 @@ public:
 		//addition operation
 		bool carry = false;
 		while (!largeNumStack.empty() && !smallNumStack.empty()) {
-			char c = (largeNumStack.top()+smallNumStack.top())-48;
+			char c = (largeNumStack.top()+smallNumStack.top()) - ASCII_OFFSET;
 			if (carry == 1) {
 				c += 1; 
 				carry = false;
@@ -182,6 +184,43 @@ public:
 			--count;
 		}
 
+		return result;
+	}
+
+// multiplication operator
+	BigInteger operator * ( BigInteger& rhs ) {
+		BigInteger result;					//BigInteger object to return
+		BigInteger largeObj;				//temporary BigInteger object for larger number
+		BigInteger smallObj;				//temporary BigInteger object for smaller number
+
+		//initialize the larger of the BigInts to largeNumStack and the smaller or equal BigInt to smallNumStack
+		if (this->numStack.size() >= rhs.numStack.size()) {
+			largeObj = *this;
+			smallObj = rhs;
+		}
+		else {
+			largeObj = rhs;
+			smallObj = *this;
+		}
+
+		//zero case, then multiply
+		if (largeObj.numStack.size() == 1 && largeObj.numStack.top() == '0' || smallObj.numStack.size() == 1 && smallObj.numStack.top() == '0') {
+			result.numStack.push('0');
+			result.numString = "0";
+		}
+		else {
+			int digitCount = 1;
+			while (!smallObj.numStack.empty()) {
+				int loop = (smallObj.numStack.top() - ASCII_OFFSET) * digitCount;
+				while (loop > 0) {
+					result = result + largeObj;
+					--loop;
+				}
+				smallObj.numStack.pop();
+				smallObj.numString.pop_back();
+				digitCount *= 10;
+			}
+		}
 		return result;
 	}
 
