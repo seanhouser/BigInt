@@ -100,6 +100,7 @@ std::ostream &operator << ( std::ostream &output, BigInteger &a ) {
 }
 
 // > operator
+/* THIS WONT WORK WITH INTS OF THE SAME NUMBER OF DIGITS WHERE THE DIFFERENCE ISN'T THE LEFT-MOST DIGIT */
 bool BigInteger::operator > ( const BigInteger& a ) {
 	if (this->numStack.size() > a.numStack.size())
 		return true;
@@ -125,6 +126,7 @@ bool BigInteger::operator > ( const BigInteger& a ) {
 }
 
 // < operator
+/* THIS WONT WORK WITH INTS OF THE SAME NUMBER OF DIGITS WHERE THE DIFFERENCE ISN'T THE LEFT-MOST DIGIT */
 bool BigInteger::operator < ( const BigInteger& a ) {
 	if (this->numStack.size() < a.numStack.size())
 		return true;
